@@ -5,6 +5,14 @@ All notable changes to `agent-safety-oss` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1] — 2026-09-09
+
+새로 추가한 법령 조문의 그래프 연결을 정리했습니다.
+
+### 수정
+
+- v1.8.0 에서 추가한 시행규칙 제37조의2·제37조의3·제37조의4 와 과태료 항목이 문서·법령 노드와 양방향으로 연결되지 않아, 조문에서 관련 문서를 되짚어 찾을 때 일부가 빠지던 문제를 바로잡았습니다. 과태료 항목도 법령 목록에 정상 등록됩니다.
+
 ## [1.8.0] — 2026-09-09
 
 2026년 8월 1일 시행 위험성평가 제도 개정을 반영했습니다.

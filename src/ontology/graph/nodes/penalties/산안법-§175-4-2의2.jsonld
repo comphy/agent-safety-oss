@@ -11,9 +11,6 @@
   "amount": 10000000,
   "amountUnit": "KRW",
   "condition": "법 제36조제1항을 위반하여 위험성평가를 실시하지 아니한 경우 — 1천만원 이하 과태료",
-  "penalizes": [
-    "art:산안법:36"
-  ],
   "verificationStatus": "verified",
   "_meta": {
     "publishedBy": "법제처 국가법령정보센터",
