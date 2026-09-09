@@ -53,9 +53,11 @@ jobs:
 
       - name: 이미 게시된 버전인지 확인 (재실행 안전)
         id: published
+        env:
+          PKG_VERSION: ${{ steps.version.outputs.version }} # run 블록 직접 보간 대신 env 경유
         run: |
           PKG_NAME="$(node -p "require('./package.json').name")"
-          if npm view "${PKG_NAME}@${{ steps.version.outputs.version }}" version >/dev/null 2>&1; then
+          if npm view "${PKG_NAME}@${PKG_VERSION}" version >/dev/null 2>&1; then
             echo "이미 게시됨 — 배포 단계를 건너뜁니다."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
