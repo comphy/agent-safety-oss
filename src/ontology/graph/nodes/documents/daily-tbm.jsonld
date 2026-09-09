@@ -379,7 +379,7 @@
       "severity": "manual_review"
     }
   ],
-  "retention": "3년 (위험성평가 고시 제14조 ②)",
+  "retention": "3년 (시행규칙 §37의4 ②)",
   "standardForm": {
     "source": "KOSHA TBM 실행 시나리오 및 회의록 양식 — 위험성평가 고시 제15조 ④ 3호 + KOSHA 권장",
     "sourceUrl": "https://www.kosha.or.kr/ebook/fcatalog/download.jsp?kd=feb&sdir=544&fn=TBM+실행+시나리오+및+회의록+양식.pdf",
@@ -482,7 +482,11 @@
     "art:위험성평가-고시:6",
     "art:위험성평가-고시:13",
     "art:산안법:29",
-    "art:위험성평가-고시:10"
+    "art:위험성평가-고시:10",
+    "art:산안법시행규칙:37",
+    "art:산안법시행규칙:37의2",
+    "art:산안법시행규칙:37의3",
+    "art:산안법시행규칙:37의4"
   ],
   "appliesToActivities": [
     "activity:tbm_daily",

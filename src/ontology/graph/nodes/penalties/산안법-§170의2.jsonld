@@ -5,22 +5,27 @@
     "Penalty",
     "Legislation"
   ],
-  "title": "산업안전보건법 제170조의2 (과태료 — 위험성평가 위반)",
+  "title": "산업안전보건법 제170조의2 (벌칙 — 이수명령 불이행)",
   "partOf": "act:산업안전보건법",
-  "penaltyType": "administrative_fine",
-  "amount": 5000000,
+  "penaltyType": "criminal",
+  "amount": 10000000,
   "amountUnit": "KRW",
-  "condition": "산업안전보건법 제36조 위반 — 위험성평가 미실시 또는 결과·조치사항 미보존",
+  "imprisonmentMaxYears": 1,
+  "condition": "제174조제1항에 따른 이수명령을 받은 사람이 경고 후에도 정당한 사유 없이 이행 지시에 따르지 않은 경우 — 벌금형 병과 시 500만원 이하 벌금, 징역형 이상 실형 병과 시 1년 이하 징역 또는 1천만원 이하 벌금",
   "verificationStatus": "verified",
+  "_meta": {
+    "publishedBy": "법제처 국가법령정보센터",
+    "licenseHint": "저작권법 제7조 비보호 (자유 인용)",
+    "fetchedAt": "2026-09-09",
+    "verifiedAt": "2026-09-09",
+    "verifiedBy": "법제처 현행본(MST 283449, 법률 제21374호 2026-08-01 시행) 조문 직접 대조",
+    "sourceUrl": "https://www.law.go.kr/법령/산업안전보건법/제170조의2",
+    "note": "2026-09-09 정정: 종전에 이 노드가 '위험성평가 위반 과태료 500만원'으로 잘못 기재되어 산안법 §36·§57 조문 노드가 이를 참조하고 있었습니다. 제170조의2는 이수명령 불이행에 대한 벌칙이며 위험성평가와 무관합니다. 위험성평가 과태료는 제175조(penalty:산안법:175-4-2의2 / -5-1 / -6-2의2)로 분리했습니다."
+  },
   "legislationIdentifier": "산업안전보건법",
-  "legislationDate": "2025-10-01",
+  "legislationDate": "2026-08-01",
   "legislationType": "Act",
   "legislationLegalForce": "InForce",
   "jurisdiction": "KR",
-  "_meta": {
-    "publishedBy": "법제처 국가법령정보센터",
-    "sourceUrl": "https://www.law.go.kr/법령/산업안전보건법/제170조의2",
-    "fetchedAt": "2026-04-26",
-    "licenseHint": "저작권법 제7조 비보호 (자유 인용)"
-  }
+  "temporalCoverage": "2026-08-01/.."
 }

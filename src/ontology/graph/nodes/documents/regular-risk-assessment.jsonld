@@ -165,9 +165,29 @@
         "assessmentTeam",
         "workerRepSignature"
       ]
+    },
+    {
+      "rule": "필수 — 실시 전 위험성평가 일정을 근로자에게 고지",
+      "severity": "manual_review",
+      "legalBasis": "art:산안법시행규칙:37의3"
+    },
+    {
+      "rule": "필수 — 실시 후 4개 항목(유해·위험 요인, 위험성 수준 결정 결과, 개선대책 수립 내용, 이행 결과) 공유",
+      "severity": "manual_review",
+      "legalBasis": "art:산안법시행규칙:37의3"
+    },
+    {
+      "rule": "필수 — 근로자 참여는 사업장 순회 점검이 원칙",
+      "severity": "manual_review",
+      "legalBasis": "art:산안법시행규칙:37의2"
+    },
+    {
+      "rule": "필수 — 기록에 참여한 근로자 및 근로자대표 포함",
+      "severity": "manual_review",
+      "legalBasis": "art:산안법시행규칙:37의4"
     }
   ],
-  "retention": "3년 (위험성평가 고시 제14조 ②)",
+  "retention": "3년 (시행규칙 §37의4 ②)",
   "standardForm": {
     "source": "KOSHA KRAS",
     "sourceUrl": "https://kras.kosha.or.kr",
@@ -263,11 +283,17 @@
     "coreSectionsAddedAt": "2026-04-27",
     "licenseHint": "황룡건설(주) + ㈜라텔웍스 (자체 정의)",
     "alignedAt": "2026-04-29",
-    "alignSource": "align-nodes-bulk.ts (KOSHA 권고 + 산안법 본문 기반)"
+    "alignSource": "align-nodes-bulk.ts (KOSHA 권고 + 산안법 본문 기반)",
+    "amendmentSyncedAt": "2026-09-09",
+    "amendmentNote": "산안법 §36(법률 제21374호) 및 시행규칙 §37·§37의2·§37의3·§37의4(고용노동부령 제477호) 2026-08-01 시행 개정 반영 — 실시 전 일정 고지, 실시 후 4개 항목 공유, 근로자 참여 방법(순회 점검 원칙), 참여 근로자·근로자대표 기록이 법정 필수가 되었습니다."
   },
   "legalBasis": [
     "art:산안법:36",
-    "art:위험성평가-고시:15"
+    "art:위험성평가-고시:15",
+    "art:산안법시행규칙:37",
+    "art:산안법시행규칙:37의2",
+    "art:산안법시행규칙:37의3",
+    "art:산안법시행규칙:37의4"
   ],
   "requires": [
     "activity:risk_assessment_general"
@@ -446,6 +472,74 @@
             "위험도 12 이상 즉시개선",
             "책임자와 완료기한 필수",
             "잔여위험도 허용 가능 여부 확인"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "근로자 공유·기록 (2026-08-01 시행 개정)",
+      "legalSource": "산안법 §36 ②·③·④·⑤ + 시행규칙 §37의2·§37의3·§37의4",
+      "fields": [
+        {
+          "key": "preNoticeDate",
+          "label": "실시 전 일정 고지일·방법",
+          "required": true,
+          "inputGuide": "위험성평가를 실시하기 전에 실시 일정을 근로자에게 알린 날짜와 방법. 사전 고지가 없으면 위반입니다 (시행규칙 §37의3 1호, 신설).",
+          "examples": [
+            "2026-09-01 / 현장 게시판 공고 + 작업 전 안전점검회의 구두 공지"
+          ],
+          "checkPoints": [
+            "평가 실시일보다 앞선 날짜인지 확인",
+            "고지 방법을 구체적으로 기재"
+          ]
+        },
+        {
+          "key": "workerParticipationMethod",
+          "label": "근로자 참여 방법",
+          "required": true,
+          "inputGuide": "사업장 순회 점검이 원칙입니다. 순회 점검에 참여시킬 수 없는 특별한 사정이 있을 때만 설문조사·면담 등으로 대체하고 그 사유를 적습니다 (시행규칙 §37의2).",
+          "examples": [
+            "사업장 순회 점검 (2026-09-03, 참여 근로자 8명)",
+            "순회 점검 불가(야간 교대) → 면담 5명 + 설문조사 12명"
+          ],
+          "checkPoints": [
+            "순회 점검 외 방법만 쓴 경우 사유 기재 필수"
+          ]
+        },
+        {
+          "key": "workerRepParticipation",
+          "label": "근로자대표 참여 여부",
+          "required": true,
+          "inputGuide": "근로자대표가 참여를 요구하면 반드시 참여시켜야 합니다 (법 §36 ③, 신설). 요구 유무와 참여 결과를 적습니다.",
+          "examples": [
+            "근로자대표 참여 요구 있음 → 참여 (김대표, 2026-09-03)",
+            "요구 없음"
+          ],
+          "checkPoints": []
+        },
+        {
+          "key": "resultSharing",
+          "label": "실시 후 공유 내용·방법",
+          "required": true,
+          "inputGuide": "① 파악한 유해·위험 요인 ② 위험성 수준 결정 결과 ③ 개선대책 수립 내용 ④ 개선대책 이행 결과 — 4개 항목을 모두 공유해야 합니다. 공유 방법은 안전보건교육·설명회·사업장 게시·서면 또는 전자적 방법 등 (법 §36 ④, 시행규칙 §37의3 2호).",
+          "examples": [
+            "4개 항목 전체를 현장 게시판 게시(2026-09-10) + 정기 안전보건교육 시 설명"
+          ],
+          "checkPoints": [
+            "4개 항목 중 누락 없는지 확인",
+            "이행 결과는 조치 완료 후 추가 공유"
+          ]
+        },
+        {
+          "key": "recordParticipants",
+          "label": "기록 — 실시 시기·담당자·참여자",
+          "required": true,
+          "inputGuide": "기록에 ① 실시 시기 및 담당자 ② 참여한 근로자 및 근로자대표 ③ 공유 4개 항목이 포함되어야 합니다 (시행규칙 §37의4 ①). 참여 근로자 기록은 신설 항목입니다.",
+          "examples": [
+            "실시 2026-09-03 / 담당 김안전(안전관리자) / 참여 근로자 8명 명단 별첨 / 근로자대표 김대표"
+          ],
+          "checkPoints": [
+            "참여 근로자 명단 누락 시 과태료 대상 (법 §175 ⑥ 2호의2)"
           ]
         }
       ]

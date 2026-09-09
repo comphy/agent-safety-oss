@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20.19-brightgreen)](https://nodejs.org)
 [![MCP](https://img.shields.io/badge/MCP-1.x-purple)](https://modelcontextprotocol.io)
-[![Release](https://img.shields.io/badge/release-v1.7.1-blue.svg)](./CHANGELOG.md)
+[![Release](https://img.shields.io/badge/release-v1.8.0-blue.svg)](./CHANGELOG.md)
 [![Tools](https://img.shields.io/badge/MCP%20tools-92-orange.svg)](./docs/IDENTITY.md)
 
 **건설현장의 법정 안전문서 작성을 더 빠르고 정확하게.** 산안법·기준규칙·중처법·KOSHA 기술지원규정(가이드)을 기반으로 안전관리자와 현장소장의 문서 작성과 검토를 돕는 오픈소스 도구입니다.
@@ -62,13 +62,13 @@ LLM은 이 그래프를 보고 문서를 작성하거나 설명할 수 있지만
 | 영역 | 내용 |
 |---|---|
 | **<!-- INV:DOCUMENTS_TOTAL -->19<!-- /INV:DOCUMENTS_TOTAL -->종 법정 안전관리 문서** | TBM · 작업계획서 · 위험성평가 · MSDS · 산재조사표 등 매일·매주·매월 작성하는 양식. docId 마스터 <!-- INV:DOCID_MASTER -->94<!-- /INV:DOCID_MASTER -->개 (19종 + 사이클·범위·발주처별 변형) |
-| **법령 <!-- INV:LAW_BUNDLE_COUNT -->10<!-- /INV:LAW_BUNDLE_COUNT -->건 핵심 조문** | 산안법 · 시행령 · 시행규칙 · 기준규칙 · 중처법 · 중처법 시행령 · 위험성평가 고시 · 건진법 등 합계 <!-- INV:LAW_ARTICLES -->76<!-- /INV:LAW_ARTICLES -->조 (전체 1,310조 중 건설안전 실무 핵심만 발췌. 전체 법령은 [법제처](https://www.law.go.kr) 직접 참조). 마지막 동기화: <!-- INV:LAW_LAST_SYNC -->2026-06-08<!-- /INV:LAW_LAST_SYNC --> |
+| **법령 <!-- INV:LAW_BUNDLE_COUNT -->10<!-- /INV:LAW_BUNDLE_COUNT -->건 핵심 조문** | 산안법 · 시행령 · 시행규칙 · 기준규칙 · 중처법 · 중처법 시행령 · 위험성평가 고시 · 건진법 등 합계 <!-- INV:LAW_ARTICLES -->79<!-- /INV:LAW_ARTICLES -->조 (전체 1,310조 중 건설안전 실무 핵심만 발췌. 전체 법령은 [법제처](https://www.law.go.kr) 직접 참조). 마지막 동기화: <!-- INV:LAW_LAST_SYNC -->2026-09-09<!-- /INV:LAW_LAST_SYNC --> |
 | **KOSHA 기술지원규정 (가이드) <!-- INV:KOSHA_BODY -->1,039<!-- /INV:KOSHA_BODY -->건** | 한국산업안전보건공단 발행 기술지침 전체 본문 (인터넷 없이 즉시 검색·인용) |
 | **양식 <!-- INV:FORMS_TOTAL -->132<!-- /INV:FORMS_TOTAL -->개** | 고용노동부·KOSHA 공식 HWP <!-- INV:FORMS_HWP -->14<!-- /INV:FORMS_HWP --> / PDF <!-- INV:FORMS_PDF -->23<!-- /INV:FORMS_PDF --> / XLSX <!-- INV:FORMS_XLSX -->1<!-- /INV:FORMS_XLSX --> 원본 + 자동 생성 Markdown 양식 <!-- INV:FORMS_MD -->94<!-- /INV:FORMS_MD -->개 (일부는 라이선스상 공식 다운로드 URL 안내로 대체) |
 | **MCP 도구 <!-- INV:TOOLS_TOTAL -->92<!-- /INV:TOOLS_TOTAL -->개** | 키 없이 바로 쓰는 <!-- INV:TOOLS_KEYLESS -->85<!-- /INV:TOOLS_KEYLESS -->개 + 공공 API 키 필요 <!-- INV:TOOLS_KEYREQ -->7<!-- /INV:TOOLS_KEYREQ -->개 (그중 <!-- INV:TOOLS_PLACEHOLDER -->2<!-- /INV:TOOLS_PLACEHOLDER -->개는 공공누리 라이선스 사유로 다운로드 URL 안내만 하는 placeholder) |
-| **위험·통제 정보망** | 작업 → 위험요인 → 통제대책 → 법령 근거 → 문서 자동 연결. 그래프 노드 <!-- INV:GRAPH_TOTAL -->3,369<!-- /INV:GRAPH_TOTAL -->개 (카테고리 1단계 <!-- INV:GRAPH_TOPLEVEL -->2,212<!-- /INV:GRAPH_TOPLEVEL --> + KOSHA Guide 1,039) · 엣지 약 <!-- INV:GRAPH_EDGES -->32,963<!-- /INV:GRAPH_EDGES --> · WorkActivity <!-- INV:GRAPH_ACTIVITIES -->41<!-- /INV:GRAPH_ACTIVITIES --> / Hazard <!-- INV:GRAPH_HAZARDS -->38<!-- /INV:GRAPH_HAZARDS --> / Control <!-- INV:GRAPH_CONTROLS -->50<!-- /INV:GRAPH_CONTROLS --> |
+| **위험·통제 정보망** | 작업 → 위험요인 → 통제대책 → 법령 근거 → 문서 자동 연결. 그래프 노드 <!-- INV:GRAPH_TOTAL -->3,375<!-- /INV:GRAPH_TOTAL -->개 (카테고리 1단계 <!-- INV:GRAPH_TOPLEVEL -->2,218<!-- /INV:GRAPH_TOPLEVEL --> + KOSHA Guide 1,039) · 엣지 약 <!-- INV:GRAPH_EDGES -->33,015<!-- /INV:GRAPH_EDGES --> · WorkActivity <!-- INV:GRAPH_ACTIVITIES -->41<!-- /INV:GRAPH_ACTIVITIES --> / Hazard <!-- INV:GRAPH_HAZARDS -->38<!-- /INV:GRAPH_HAZARDS --> / Control <!-- INV:GRAPH_CONTROLS -->50<!-- /INV:GRAPH_CONTROLS --> |
 
-→ 위 자료들이 **서로 연결**되어 있어, "굴착 작업"이라는 한 단어만 알면 적용 법령·KOSHA 가이드·위험·통제·양식이 자동으로 따라옵니다. (패키지 버전: <!-- INV:VERSION -->1.7.1<!-- /INV:VERSION -->)
+→ 위 자료들이 **서로 연결**되어 있어, "굴착 작업"이라는 한 단어만 알면 적용 법령·KOSHA 가이드·위험·통제·양식이 자동으로 따라옵니다. (패키지 버전: <!-- INV:VERSION -->1.8.0<!-- /INV:VERSION -->)
 
 ## 시작하기
 

@@ -1,0 +1,33 @@
+{
+  "@context": "../../context.jsonld",
+  "@id": "penalty:산안법:175-5-1",
+  "@type": [
+    "Penalty",
+    "Legislation"
+  ],
+  "title": "산업안전보건법 제175조 제5항 제1호 (과태료 — 근로자 참여·근로자대표 참여·결과 공유 위반)",
+  "partOf": "act:산업안전보건법",
+  "penaltyType": "administrative_fine",
+  "amount": 5000000,
+  "amountUnit": "KRW",
+  "condition": "법 제36조제2항(근로자 참여)·제3항(근로자대표 참여)·제4항 전단(위험성평가 관련 사항의 근로자 공유)을 위반한 경우 — 500만원 이하 과태료",
+  "penalizes": [
+    "art:산안법:36"
+  ],
+  "verificationStatus": "verified",
+  "_meta": {
+    "publishedBy": "법제처 국가법령정보센터",
+    "licenseHint": "저작권법 제7조 비보호 (자유 인용)",
+    "fetchedAt": "2026-09-09",
+    "verifiedAt": "2026-09-09",
+    "verifiedBy": "법제처 현행본(MST 283449, 법률 제21374호 2026-08-01 시행) 조문 직접 대조",
+    "sourceUrl": "https://www.law.go.kr/법령/산업안전보건법/제175조",
+    "note": "법률 제21374호(공포 2026-02-19, 시행 2026-08-01) 개정으로 위험성평가 위반에 대한 과태료가 신설·정비되었습니다. 부칙 제2조에 따라 시행 이후 실시하는 위험성평가부터 적용됩니다."
+  },
+  "legislationIdentifier": "산업안전보건법",
+  "legislationDate": "2026-08-01",
+  "legislationType": "Act",
+  "legislationLegalForce": "InForce",
+  "jurisdiction": "KR",
+  "temporalCoverage": "2026-08-01/.."
+}
