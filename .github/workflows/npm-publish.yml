@@ -1,0 +1,69 @@
+# npm 배포 자동화 — tag(vX.Y.Z) push 시 registry 게시
+#
+# 본질: 배포 인증을 개인 로컬 토큰이 아니라 repo Secret 한 곳으로 모은다.
+# 로컬 npm 토큰이 만료돼도 tag push 만으로 배포가 끝나며, 배포 코드는 항상 tag 시점 트리와 일치한다.
+#
+# 사전 준비 (1회):
+#   1. npmjs.com → Access Tokens → Generate New Token → **Automation** 선택
+#   2. gh secret set NPM_TOKEN --repo ratelworks/agent-safety-oss   (또는 repo Settings → Secrets)
+#
+# 게이트: npm publish 가 package.json 의 prepublishOnly 체인(공개 위생·릴리즈 노트·빌드·
+#         SHACL·그래프 감사·문서 정합 등)을 자동 실행한다. 하나라도 실패하면 게시되지 않는다.
+name: npm publish
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch: # 게이트 실패 후 재시도용 수동 실행
+
+permissions:
+  contents: read
+  id-token: write # provenance(출처 증명) 발급용 OIDC
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install
+        run: npm ci
+
+      - name: Tag ↔ package.json 버전 일치 확인
+        id: version
+        run: |
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            TAG_VER="${GITHUB_REF_NAME#v}"
+          else
+            TAG_VER="$(node -p "require('./package.json').version")"
+          fi
+          PKG_VER="$(node -p "require('./package.json').version")"
+          if [ "$TAG_VER" != "$PKG_VER" ]; then
+            echo "::error::tag v$TAG_VER ≠ package.json $PKG_VER — 버전 3자 동기화 위반"
+            exit 1
+          fi
+          echo "version=$PKG_VER" >> "$GITHUB_OUTPUT"
+
+      - name: 이미 게시된 버전인지 확인 (재실행 안전)
+        id: published
+        run: |
+          PKG_NAME="$(node -p "require('./package.json').name")"
+          if npm view "${PKG_NAME}@${{ steps.version.outputs.version }}" version >/dev/null 2>&1; then
+            echo "이미 게시됨 — 배포 단계를 건너뜁니다."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish (prepublishOnly 게이트 자동 실행)
+        if: steps.published.outputs.skip == 'false'
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
