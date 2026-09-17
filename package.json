@@ -152,9 +152,9 @@
     "node": ">=20.19.0"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "commander": "^12.1.0",
-    "fast-xml-parser": "^5.8.0",
+    "fast-xml-parser": "^5.11.1",
     "graphology": "^0.26.0",
     "zod": "^3.23.8"
   },
@@ -167,9 +167,8 @@
     "@zazuko/env-node": "^3.0.0",
     "clownface": "^2.0.3",
     "jsonld": "^9.0.0",
-    "kordoc": "^2.8.0",
+    "kordoc": "^4.14.0",
     "n3": "^2.0.3",
-    "pdfjs-dist": "^5.7.284",
     "rdf-ext": "^2.6.0",
     "rdf-validate-shacl": "^0.6.5",
     "tsx": "^4.22.3",
