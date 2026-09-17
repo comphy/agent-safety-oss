@@ -5,6 +5,20 @@ All notable changes to `agent-safety-oss` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.2] — 2026-09-17
+
+알려진 보안 취약점이 있던 의존성을 정리하고, 중단됐던 자동 게시를 복구했습니다.
+
+### 수정
+
+- 문서·이미지 변환에 쓰는 개발용 라이브러리가 취약점이 보고된 구버전에 묶여 있었습니다. 최신 버전으로 올려 설치 시 나오던 보안 경고가 모두 사라졌습니다.
+- 실제로 쓰이지 않으면서 취약점만 가지고 있던 PDF 처리 라이브러리를 의존성에서 덜어냈습니다. 설치 용량도 함께 줄어듭니다.
+- 자동 게시가 인증 문제로 멈춰 있어 1.8.0 과 1.8.1 이 패키지 저장소에 올라가지 못했습니다. 이 버전부터 다시 정상 게시됩니다.
+
+### 변경
+
+- 내부적으로 쓰는 도구 모음과 개발 의존성을 최신으로 맞췄습니다. 사용 방법과 도구 목록은 그대로입니다.
+
 ## [1.8.1] — 2026-09-09
 
 새로 추가한 법령 조문의 그래프 연결을 정리했습니다.
