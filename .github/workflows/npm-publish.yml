@@ -80,29 +80,35 @@ jobs:
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: 배포 인증 사전 점검 (OIDC 우선 · 토큰 폴백 — 값 비노출)
+      - name: 배포 인증 사전 점검 (토큰 검증 우선 · 없으면 OIDC — 값 비노출)
         if: steps.published.outputs.skip == 'false'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "npm 버전: $(npm --version) (OIDC 요구 11.5.1+)"
 
-          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ]; then
-            echo "OIDC 환경 확인 — Trusted Publishing 으로 인증합니다."
-            echo "  (npmjs.com 패키지 설정에 이 repo/워크플로가 Trusted Publisher 로 등록돼 있어야 합니다)"
+          # ⚠️ ACTIONS_ID_TOKEN_REQUEST_URL 은 permissions.id-token: write 만 있으면
+          #    Trusted Publisher 등록 여부와 무관하게 항상 설정된다. 따라서 이 변수의
+          #    존재를 "OIDC 로 배포 가능" 의 근거로 삼으면 안 된다.
+          #    토큰이 있으면 토큰을 실제로 검증하고, 없을 때만 OIDC 에 맡긴다.
+          if [ -n "${NODE_AUTH_TOKEN}" ]; then
+            echo "토큰 인증 사용 (길이 ${#NODE_AUTH_TOKEN} — 값은 출력하지 않음)"
+            npm whoami || {
+              echo "::error::토큰이 registry 인증에 실패했습니다 — 만료·오타·권한(read/write + bypass 2FA) 확인 필요."
+              exit 1
+            }
             exit 0
           fi
 
-          if [ -z "${NODE_AUTH_TOKEN}" ]; then
-            echo "::error::인증 수단이 없습니다 — npmjs.com 에서 Trusted Publisher 를 등록하거나 NPM_TOKEN Secret 을 설정하세요."
-            exit 1
+          if [ -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ]; then
+            echo "NPM_TOKEN 이 비어 있습니다 — Trusted Publishing(OIDC) 으로 시도합니다."
+            echo "  npmjs.com 패키지 설정에 Trusted Publisher 가 등록돼 있지 않으면 게시 단계에서 실패합니다."
+            echo "  등록값: ratelworks / agent-safety-oss / npm-publish.yml"
+            exit 0
           fi
 
-          echo "토큰 인증 사용 (길이 ${#NODE_AUTH_TOKEN} — 값은 출력하지 않음)"
-          npm whoami || {
-            echo "::error::토큰이 registry 인증에 실패했습니다 — 만료·오타·권한(read/write + bypass 2FA) 확인 필요."
-            exit 1
-          }
+          echo "::error::인증 수단이 없습니다 — NPM_TOKEN Secret 을 설정하거나 npmjs.com 에서 Trusted Publisher 를 등록하세요."
+          exit 1
 
       - name: Publish (prepublishOnly 게이트 자동 실행)
         if: steps.published.outputs.skip == 'false'
