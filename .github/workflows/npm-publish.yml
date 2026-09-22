@@ -46,8 +46,12 @@ jobs:
 
       # Node 22 번들 npm 은 10.9.x 인데 Trusted Publishing(OIDC) 은 11.5.1 이상을 요구한다.
       # 이 단계가 없으면 Trusted Publisher 를 등록해도 OIDC 인증이 일어나지 않는다.
-      - name: npm CLI 상향 (OIDC 요구사항 — 11.5.1+)
-        run: npm install -g npm@latest
+      #
+      # ⚠️ `npm@latest` 로 두지 않는다 — 검증되지 않은 새 메이저가 CI 로 바로 흘러든다.
+      #    실제로 npm 12 는 `pack --json` 출력이 달라져 검증 스크립트의 JSON 파싱이 깨졌다
+      #    (2026-09-22, v1.8.2 배포 실패). 메이저를 11 로 고정해 로컬과 같은 계열을 쓴다.
+      - name: npm CLI 상향 (OIDC 요구사항 — 11.5.1+, 메이저 고정)
+        run: npm install -g "npm@^11.5.1"
 
       - name: Install
         run: npm ci
