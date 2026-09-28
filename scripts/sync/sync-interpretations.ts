@@ -15,7 +15,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..", "..");
 const ARTICLES = resolve(ROOT, "src", "ontology", "graph", "nodes", "articles");
 const INTERPS = resolve(ROOT, "src", "ontology", "graph", "nodes", "interpretations");
-const OC = process.env.LAW_OC || "ryongkoon1984";
+const OC = process.env.LAW_OC ?? "";
+if (!OC) {
+  console.error("LAW_OC 환경 변수 필요 (법제처 OpenAPI 인증키). export LAW_OC=...");
+  process.exit(2);
+}
 
 const SEARCH_KEYWORDS = [
   "산업안전보건법",

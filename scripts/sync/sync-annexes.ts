@@ -12,7 +12,11 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..", "..");
 const ANNEXES = resolve(ROOT, "src", "ontology", "graph", "nodes", "annexes");
-const OC = process.env.LAW_OC || "ryongkoon1984";
+const OC = process.env.LAW_OC ?? "";
+if (!OC) {
+  console.error("LAW_OC 환경 변수 필요 (법제처 OpenAPI 인증키). export LAW_OC=...");
+  process.exit(2);
+}
 
 const LAWS = [
   { actKey: "산안법",        mst: "276853", actNode: "act:산업안전보건법" },

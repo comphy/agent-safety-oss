@@ -1,6 +1,6 @@
 {
   "name": "agent-safety-oss",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "건설현장의 법정 안전문서 작성을 더 빠르고 정확하게. 산안법·기준규칙·중처법·KOSHA Guide를 기반으로 안전관리자와 현장소장의 문서 작성과 검토를 돕는 오픈소스 도구입니다.",
   "type": "module",
   "main": "build/index.js",
@@ -152,7 +152,7 @@
     "node": ">=20.19.0"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/sdk": "^1.30.1",
     "commander": "^12.1.0",
     "fast-xml-parser": "^5.11.1",
     "graphology": "^0.26.0",
@@ -162,16 +162,16 @@
     "@rdfjs/dataset": "^2.0.3",
     "@rdfjs/parser-n3": "^2.2.0",
     "@types/jsonld": "^1.5.15",
-    "@types/n3": "^1.26.1",
-    "@types/node": "^22.20.3",
+    "@types/n3": "^1.26.4",
+    "@types/node": "^22.20.4",
     "@zazuko/env-node": "^3.1.0",
     "clownface": "^2.0.3",
     "jsonld": "^9.0.0",
-    "kordoc": "^4.15.4",
+    "kordoc": "^4.15.7",
     "n3": "^2.7.12",
     "rdf-ext": "^2.6.0",
     "rdf-validate-shacl": "^0.6.5",
-    "tsx": "^4.23.13",
+    "tsx": "^4.23.15",
     "typescript": "^5.7.2"
   },
   "overrides": {

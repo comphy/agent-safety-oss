@@ -16,7 +16,7 @@
   "verificationStatus": "verified",
   "_meta": {
     "publishedBy": "법제처 국가법령정보센터 — 정부유권해석",
-    "sourceUrl": "https://www.law.go.kr/DRF/lawService.do?OC=ryongkoon1984&target=expc&ID=314491",
+    "sourceUrl": "https://www.law.go.kr/LSW/expcInfoP.do?expcSeq=314491",
     "fetchedAt": "2026-04-28",
     "licenseHint": "저작권법 제7조 비보호 (자유 인용)",
     "note": "정부유권해석례 메타. 본문은 sourceUrl 또는 lawService.do?target=expc 직접 호출."
