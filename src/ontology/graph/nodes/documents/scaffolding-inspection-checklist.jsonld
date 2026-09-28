@@ -11,7 +11,7 @@
     "비계 점검일지",
     "Scaffolding Daily Check"
   ],
-  "description": "기준규칙 제59조~제71조 비계 작업 시 매일·강풍·강우 후 안전점검. 강관비계·시스템비계·달비계·말비계·이동식비계 구분. KOSHA Guide C-30·C-D-1 권장 양식.",
+  "description": "기준규칙 제59조~제70조 비계 작업 시 매일·강풍·강우 후 안전점검. 강관비계·시스템비계·달비계·말비계·이동식비계 구분. KOSHA Guide C-30·C-D-1 권장 양식.",
   "cycle": "cyc:weekly",
   "trigger": "비계 설치·해체·변경 시 + 매일 작업 시작 전 + 강풍(10m/s 이상)·강우(우중) 작업 후",
   "applicableWhen": {
